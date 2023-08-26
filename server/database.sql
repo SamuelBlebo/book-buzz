@@ -1,7 +1,7 @@
  CREATE DATABASE BookBuzz;
 
- CREATE TABLE Buzz(
+ CREATE TABLE BookBuzz(
     book_id SERIAL PRIMARY KEY,
     description VARCHAR(244)
 
- );
+ )
