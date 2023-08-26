@@ -24,7 +24,6 @@ app.post("/books", async (req, res) => {
 });
 
 // get all book
-
 app.get("/books", async (req, res) => {
   try {
     const allBuzzs = await pool.query("SELECT * FROM Buzz");
@@ -35,7 +34,6 @@ app.get("/books", async (req, res) => {
 });
 
 // get a book
-
 app.get("/books/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -49,7 +47,6 @@ app.get("/books/:id", async (req, res) => {
 });
 
 // update a book
-
 app.put("/books/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -78,6 +75,7 @@ app.delete("/books/:id", async (req, res) => {
   }
 });
 
+//server
 app.listen(4000, () => {
   console.log("server has started on port 4000");
 });
