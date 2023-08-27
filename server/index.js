@@ -12,12 +12,12 @@ app.use(express.json()); //req body
 app.post("/books", async (req, res) => {
   try {
     const { description } = req.body;
-    const newBuzz = await pool.query(
-      "INSERT INTO buzz (description) VALUES($1) RETURNING *",
+    const newBook = await pool.query(
+      "INSERT INTO book (description) VALUES($1) RETURNING *",
       [description]
     );
 
-    res.json(newBuzz.rows[0]);
+    res.json(newBook.rows[0]);
   } catch (err) {
     console.log(err.message);
   }
@@ -26,8 +26,8 @@ app.post("/books", async (req, res) => {
 // get all book
 app.get("/books", async (req, res) => {
   try {
-    const allBuzzs = await pool.query("SELECT * FROM Buzz");
-    res.json(allBuzzs.rows);
+    const allBooks = await pool.query("SELECT * FROM Book");
+    res.json(allBooks.rows);
   } catch (err) {
     console.log(err.message);
   }
@@ -37,10 +37,10 @@ app.get("/books", async (req, res) => {
 app.get("/books/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const buzz = await pool.query("SELECT * FROM buzz WHERE book_id = $1", [
+    const book = await pool.query("SELECT * FROM book WHERE book_id = $1", [
       id,
     ]);
-    res.json(buzz.rows[0]);
+    res.json(book.rows[0]);
   } catch (err) {
     console.log(err.message);
   }
@@ -51,12 +51,12 @@ app.put("/books/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { description } = req.body;
-    const updateBuzz = await pool.query(
-      "UPDATE buzz SET  description = $1 WHERE book_id = $2",
+    const updateBook = await pool.query(
+      "UPDATE book SET  description = $1 WHERE book_id = $2",
       [description, id]
     );
 
-    res.json("Todo was updated!");
+    res.json("Book was updated!");
   } catch (err) {
     console.log(err.message);
   }
@@ -66,7 +66,7 @@ app.put("/books/:id", async (req, res) => {
 app.delete("/books/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const deleteBuzz = await pool.query("DELETE FROM buzz WHERE book_id = $1", [
+    const deleteBook = await pool.query("DELETE FROM book WHERE book_id = $1", [
       id,
     ]);
     res.json("Item Deleted Successfully");

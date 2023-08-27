@@ -3,8 +3,9 @@
  CREATE DATABASE BookBuzz;
 
 -- Creating the table
- CREATE TABLE BookBuzz(
+ CREATE TABLE Book(
     book_id SERIAL PRIMARY KEY,
     description VARCHAR(244)
 
  )
+ 
