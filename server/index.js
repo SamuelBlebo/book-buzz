@@ -52,7 +52,7 @@ app.put("/books/:id", async (req, res) => {
     const { id } = req.params;
     const { description } = req.body;
     const updateBook = await pool.query(
-      "UPDATE book SET  description = $1 WHERE book_id = $2",
+      "UPDATE book SET description = $1 WHERE book_id = $2",
       [description, id]
     );
 
