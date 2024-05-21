@@ -1,5 +1,3 @@
 # BookBuzz
 
-A social book review platform.
-
-Hello world
+Using Google Books API, show books and their reviews. 
